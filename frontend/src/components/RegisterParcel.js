@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./RegisterParcel.css";
 
-export default function RegisterParcel({ onClose }) {
+export default function RegisterParcel({ onClose, selectedArea }) {
   const [formData, setFormData] = useState({
-    coordinates: "",
+    coordinates: selectedArea?.geoJson || "",
+    area: selectedArea?.area || "",
     owner: "",
     documents: null,
     description: "",
+    location: "",
+    value: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,13 +21,39 @@ export default function RegisterParcel({ onClose }) {
     setError(null);
 
     try {
-      // TODO: Implement actual registration
-      // 1. Upload documents to IPFS
-      // 2. Call smart contract to register
-      // 3. Update backend database
-      alert("Registration feature will be implemented soon!");
+      const formDataObj = new FormData();
+      formDataObj.append("coordinates", formData.coordinates);
+      formDataObj.append("area", formData.area);
+      formDataObj.append("owner", formData.owner);
+      formDataObj.append("description", formData.description);
+      formDataObj.append("location", formData.location);
+      formDataObj.append("value", formData.value);
+      formDataObj.append("documents", formData.documents);
+
+      const response = await axios.post(
+        `${
+          process.env.REACT_APP_API_URL || "http://localhost:3001"
+        }/api/parcels/register`,
+        formDataObj,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.data.success) {
+        alert(
+          `Parcel registered successfully! Parcel ID: ${response.data.parcelId}`
+        );
+        onClose();
+        // Optionally refresh the map data
+        window.location.reload();
+      } else {
+        setError("Registration failed");
+      }
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data?.error || err.message);
     } finally {
       setLoading(false);
     }
@@ -54,10 +83,53 @@ export default function RegisterParcel({ onClose }) {
             name="coordinates"
             value={formData.coordinates}
             onChange={handleChange}
-            placeholder="Enter GeoJSON coordinates"
+            placeholder="Draw on map or enter GeoJSON coordinates"
+            required
+            readOnly={!!selectedArea}
+          />
+          <small>
+            {selectedArea
+              ? `Area: ${formData.area} m²`
+              : "Example: [[lon1,lat1], [lon2,lat2], ...]"}
+          </small>
+        </div>
+
+        <div className="form-group">
+          <label>Area (m²)</label>
+          <input
+            type="number"
+            name="area"
+            value={formData.area}
+            onChange={handleChange}
+            placeholder="Property area in square meters"
+            required
+            readOnly={!!selectedArea}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Location</label>
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            placeholder="City, State, Country"
             required
           />
-          <small>Example: [[lon1,lat1], [lon2,lat2], ...]</small>
+        </div>
+
+        <div className="form-group">
+          <label>Property Value (ETH)</label>
+          <input
+            type="number"
+            name="value"
+            value={formData.value}
+            onChange={handleChange}
+            placeholder="0.00"
+            step="0.01"
+            min="0"
+          />
         </div>
 
         <div className="form-group">

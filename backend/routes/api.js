@@ -1,8 +1,6 @@
 import express from "express";
 import { query } from "../db.js";
 import multer from "multer";
-import { ethers } from "ethers";
-import { LandRegistry } from "../contracts/LandRegistry.js";
 
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });

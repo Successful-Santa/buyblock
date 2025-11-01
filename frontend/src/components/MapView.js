@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
+import L from "leaflet";
+import "leaflet-draw";
+import "leaflet-geometryutil";
 import axios from "axios";
 import { SelectedParcelContext } from "./SelectedParcelContext";
 import ParcelDetails from "./ParcelDetails";
@@ -14,6 +18,72 @@ const INDIA_BOUNDS = [
   [35.5, 97.5],
 ]; // southWest, northEast in lat,lng
 
+// Drawing controls component
+function DrawingControls({ onAreaSelected }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!map) return;
+
+    // Initialize draw control
+    const drawControl = new L.Control.Draw({
+      draw: {
+        polygon: {
+          allowIntersection: false,
+          showArea: true,
+          drawError: {
+            color: "#e1e100",
+            message: "<strong>Error:</strong> Shape edges cannot cross!",
+          },
+          shapeOptions: {
+            color: "#007bff",
+            fillColor: "#007bff",
+            fillOpacity: 0.2,
+            weight: 2,
+          },
+        },
+        polyline: false,
+        rectangle: false,
+        circle: false,
+        marker: false,
+        circlemarker: false,
+      },
+      edit: {
+        featureGroup: new L.FeatureGroup(),
+        remove: true,
+        edit: false,
+      },
+    });
+
+    map.addControl(drawControl);
+
+    // Handle draw events
+    map.on(L.Draw.Event.CREATED, (e) => {
+      const layer = e.layer;
+      const geoJson = layer.toGeoJSON();
+
+      // Calculate area in square meters
+      const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
+
+      onAreaSelected({
+        geoJson: JSON.stringify(geoJson),
+        area: Math.round(area),
+        bounds: layer.getBounds(),
+      });
+
+      // Add to map
+      map.addLayer(layer);
+    });
+
+    return () => {
+      map.removeControl(drawControl);
+      map.off(L.Draw.Event.CREATED);
+    };
+  }, [map, onAreaSelected]);
+
+  return null;
+}
+
 function colorForString(s) {
   // simple hash to HSL
   let h = 0;
@@ -26,10 +96,11 @@ export default function MapView() {
   const { selected, setSelected } = useContext(SelectedParcelContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [selectedArea, setSelectedArea] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/parcels")
+      .get("http://localhost:3001/api/parcels")
       .then((r) => {
         // backend returns FeatureCollection; if empty, fall back to sample
         if (!r.data || !r.data.features || r.data.features.length === 0) {
@@ -55,6 +126,11 @@ export default function MapView() {
     };
   }
 
+  const handleAreaSelected = (areaData) => {
+    setSelectedArea(areaData);
+    setShowRegister(true);
+  };
+
   return (
     <div className="map">
       {selected && (
@@ -67,7 +143,13 @@ export default function MapView() {
         />
       )}
       {showRegister && (
-        <RegisterParcel onClose={() => setShowRegister(false)} />
+        <RegisterParcel
+          onClose={() => {
+            setShowRegister(false);
+            setSelectedArea(null);
+          }}
+          selectedArea={selectedArea}
+        />
       )}
       <MapContainer
         center={[22.0, 82.0]}
@@ -77,6 +159,7 @@ export default function MapView() {
         maxBoundsViscosity={0.8}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DrawingControls onAreaSelected={handleAreaSelected} />
         {data && (
           <GeoJSON
             data={data}
@@ -95,6 +178,9 @@ export default function MapView() {
       <button className="fab" onClick={() => setShowRegister(true)}>
         +<span className="fab-tooltip">Register New Property</span>
       </button>
+      <div className="draw-instructions">
+        <p>Click the polygon tool to draw property boundaries</p>
+      </div>
     </div>
   );
 }

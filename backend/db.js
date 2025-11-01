@@ -95,23 +95,110 @@ async function query(sql, params = []) {
 
   // handle basic upsert used by indexer
   if (q.startsWith("insert into parcels")) {
-    const [parcel_id, geojson, doc_hash, owner] = params;
-    const existing = dbJson.parcels.find(
-      (p) => String(p.parcel_id) === String(parcel_id)
-    );
-    if (existing) {
-      existing.owner = owner;
-    } else {
+    // Check if this is the registration INSERT (7 params) or indexer INSERT (4 params)
+    if (params.length === 7) {
+      // Registration INSERT: geojson, owner, area, location, value, doc_hash, description
+      const [geojson, owner, area, location, value, docHash, description] =
+        params;
+      const parcelId =
+        (dbJson.parcels.length
+          ? Math.max(...dbJson.parcels.map((p) => p.parcel_id || 0))
+          : 0) + 1;
       dbJson.parcels.push({
-        parcel_id,
+        parcel_id: parcelId,
         geojson: JSON.parse(geojson),
-        doc_hash: doc_hash ? Buffer.from(doc_hash).toString("hex") : null,
         owner,
+        area: area || 0,
+        location: location || "",
+        value: value || 0,
+        doc_hash: docHash ? Buffer.from(docHash).toString("hex") : null,
+        description: description || "",
         registered_at: new Date().toISOString(),
       });
+      writeJsonDb(dbJson);
+      return { rowCount: 1 };
+    } else {
+      // Indexer INSERT: parcel_id, geojson, doc_hash, owner
+      const [parcel_id, geojson, doc_hash, owner] = params;
+      const existing = dbJson.parcels.find(
+        (p) => String(p.parcel_id) === String(parcel_id)
+      );
+      if (existing) {
+        existing.owner = owner;
+      } else {
+        dbJson.parcels.push({
+          parcel_id,
+          geojson: JSON.parse(geojson),
+          doc_hash: doc_hash ? Buffer.from(doc_hash).toString("hex") : null,
+          owner,
+          registered_at: new Date().toISOString(),
+        });
+      }
+      writeJsonDb(dbJson);
+      return { rowCount: 1 };
     }
-    writeJsonDb(dbJson);
-    return { rowCount: 1 };
+  }
+
+  // Handle last_insert_rowid() for SQLite compatibility
+  if (q.includes("last_insert_rowid()")) {
+    const parcelId = dbJson.parcels.length
+      ? Math.max(...dbJson.parcels.map((p) => p.parcel_id || 0))
+      : 1;
+    return { rows: [{ parcel_id: parcelId }], rowCount: 1 };
+  }
+
+  // Handle property_valuations queries
+  if (q.startsWith("select * from property_valuations where parcel_id")) {
+    const id = params[0];
+    const rows = (dbJson.property_valuations || []).filter(
+      (v) => String(v.parcel_id) === String(id)
+    );
+    rows.sort(
+      (a, b) => new Date(b.valuation_date) - new Date(a.valuation_date)
+    );
+    return { rows, rowCount: rows.length };
+  }
+
+  if (
+    q.includes("from property_valuations") &&
+    q.includes("order by valuation_date asc")
+  ) {
+    const id = params[0];
+    const rows = (dbJson.property_valuations || []).filter(
+      (v) => String(v.parcel_id) === String(id)
+    );
+    rows.sort(
+      (a, b) => new Date(a.valuation_date) - new Date(b.valuation_date)
+    );
+    return { rows, rowCount: rows.length };
+  }
+
+  // Handle property_disputes queries
+  if (q.startsWith("select * from property_disputes where parcel_id")) {
+    const id = params[0];
+    const rows = (dbJson.property_disputes || []).filter(
+      (d) => String(d.parcel_id) === String(id)
+    );
+    rows.sort((a, b) => new Date(b.dispute_date) - new Date(a.dispute_date));
+    return { rows, rowCount: rows.length };
+  }
+
+  // Handle property_documents queries
+  if (q.startsWith("select * from property_documents where parcel_id")) {
+    const id = params[0];
+    const rows = (dbJson.property_documents || []).filter(
+      (d) => String(d.parcel_id) === String(id)
+    );
+    return { rows, rowCount: rows.length };
+  }
+
+  // Handle nearby parcels query for analytics
+  if (q.includes("from parcels p") && q.includes("where p.parcel_id !=")) {
+    const id = params[0];
+    const rows = dbJson.parcels
+      .filter((p) => String(p.parcel_id) !== String(id) && p.value != null)
+      .slice(0, 5);
+    return { rows, rowCount: rows.length };
   }
 
   if (q.startsWith("insert into ownership_history")) {

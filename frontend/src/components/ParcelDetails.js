@@ -23,17 +23,17 @@ export default function ParcelDetails({ parcelId, onClose }) {
     Promise.all([
       axios.get(
         `${
-          process.env.REACT_APP_API_URL || "http://localhost:4000"
+          process.env.REACT_APP_API_URL || "http://localhost:3001"
         }/api/parcels/${parcelId}`
       ),
       axios.get(
         `${
-          process.env.REACT_APP_API_URL || "http://localhost:4000"
+          process.env.REACT_APP_API_URL || "http://localhost:3001"
         }/api/parcels/${parcelId}/history`
       ),
       axios.get(
         `${
-          process.env.REACT_APP_API_URL || "http://localhost:4000"
+          process.env.REACT_APP_API_URL || "http://localhost:3001"
         }/api/parcels/${parcelId}/analytics`
       ),
     ])

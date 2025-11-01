@@ -12,11 +12,26 @@
           "type": "Polygon",
           "coordinates": [
             [
-              [72.8, 19.07],
-              [72.82, 19.07],
-              [72.82, 19.09],
-              [72.8, 19.09],
-              [72.8, 19.07]
+              [
+                72.8,
+                19.07
+              ],
+              [
+                72.82,
+                19.07
+              ],
+              [
+                72.82,
+                19.09
+              ],
+              [
+                72.8,
+                19.09
+              ],
+              [
+                72.8,
+                19.07
+              ]
             ]
           ]
         }
@@ -37,18 +52,39 @@
           "type": "Polygon",
           "coordinates": [
             [
-              [77.19, 28.61],
-              [77.21, 28.61],
-              [77.21, 28.63],
-              [77.19, 28.63],
-              [77.19, 28.61]
+              [
+                77.19,
+                28.61
+              ],
+              [
+                77.21,
+                28.61
+              ],
+              [
+                77.21,
+                28.63
+              ],
+              [
+                77.19,
+                28.63
+              ],
+              [
+                77.19,
+                28.61
+              ]
             ]
           ]
         }
       },
       "doc_hash": "1111111111111111111111111111111111111111111111111111111111111111",
       "owner": "0xOwnerB",
-      "registered_at": "2025-11-01T00:00:00.000Z"
+      "area": 5000,
+      "location": "New Delhi, Delhi, India",
+      "value": 2500000,
+      "description": "Prime commercial property in New Delhi",
+      "status": "active",
+      "is_verified": true,
+      "registered_at": "2023-01-15T10:30:00.000Z"
     },
     {
       "parcel_id": "3",
@@ -62,11 +98,26 @@
           "type": "Polygon",
           "coordinates": [
             [
-              [77.59, 12.97],
-              [77.61, 12.97],
-              [77.61, 12.99],
-              [77.59, 12.99],
-              [77.59, 12.97]
+              [
+                77.59,
+                12.97
+              ],
+              [
+                77.61,
+                12.97
+              ],
+              [
+                77.61,
+                12.99
+              ],
+              [
+                77.59,
+                12.99
+              ],
+              [
+                77.59,
+                12.97
+              ]
             ]
           ]
         }
@@ -74,9 +125,205 @@
       "doc_hash": "2222222222222222222222222222222222222222222222222222222222222222",
       "owner": "0xOwnerC",
       "registered_at": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "parcel_id": 4,
+      "geojson": {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.066002,
+                28.425228
+              ],
+              [
+                77.065744,
+                28.414055
+              ],
+              [
+                77.078447,
+                28.413753
+              ],
+              [
+                77.07922,
+                28.425299
+              ],
+              [
+                77.066002,
+                28.425228
+              ]
+            ]
+          ]
+        }
+      },
+      "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "area": "1605238",
+      "location": "delhi",
+      "value": "0.24",
+      "doc_hash": "2edd844daf51a9f9006b365efabb60c29f6438f14cc10a93425ad32ced181e03",
+      "description": "asdf",
+      "registered_at": "2025-11-01T18:04:49.724Z"
+    },
+    {
+      "parcel_id": 5,
+      "geojson": {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.291393,
+                28.627405
+              ],
+              [
+                77.291737,
+                28.617764
+              ],
+              [
+                77.303324,
+                28.617689
+              ],
+              [
+                77.30341,
+                28.625221
+              ],
+              [
+                77.291393,
+                28.627405
+              ]
+            ]
+          ]
+        }
+      },
+      "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "area": "1100692",
+      "location": "delhi",
+      "value": "1.400",
+      "doc_hash": "0b75ccdd3e643c463d5c1dbf779c521a82b79362e5fad00310601c6ac9516777",
+      "description": "nice property",
+      "registered_at": "2025-11-01T18:08:37.243Z"
     }
   ],
-  "ownership_history": [],
+  "ownership_history": [
+    {
+      "id": 1,
+      "parcel_id": "2",
+      "previous_owner": "0xOriginalOwner123",
+      "new_owner": "0xOwnerA2023",
+      "changed_at": "2023-01-15T10:30:00.000Z",
+      "transaction_hash": "0xabc123def456",
+      "transfer_type": "sale",
+      "sale_price": 1800000
+    },
+    {
+      "id": 2,
+      "parcel_id": "2",
+      "previous_owner": "0xOwnerA2023",
+      "new_owner": "0xSecondOwner456",
+      "changed_at": "2024-03-20T14:15:00.000Z",
+      "transaction_hash": "0xdef789ghi012",
+      "transfer_type": "sale",
+      "sale_price": 2200000
+    },
+    {
+      "id": 3,
+      "parcel_id": "2",
+      "previous_owner": "0xSecondOwner456",
+      "new_owner": "0xOwnerB",
+      "changed_at": "2025-08-10T09:45:00.000Z",
+      "transaction_hash": "0xghi345jkl678",
+      "transfer_type": "sale",
+      "sale_price": 2500000
+    }
+  ],
+  "property_valuations": [
+    {
+      "id": 1,
+      "parcel_id": "2",
+      "value": 1800000,
+      "valuation_type": "market",
+      "appraiser": "Delhi Property Valuers Ltd.",
+      "valuation_date": "2023-01-10T00:00:00.000Z",
+      "area": 5000
+    },
+    {
+      "id": 2,
+      "parcel_id": "2",
+      "value": 2000000,
+      "valuation_type": "market",
+      "appraiser": "National Property Assessment Corp.",
+      "valuation_date": "2023-12-15T00:00:00.000Z",
+      "area": 5000
+    },
+    {
+      "id": 3,
+      "parcel_id": "2",
+      "value": 2200000,
+      "valuation_type": "market",
+      "appraiser": "Delhi Property Valuers Ltd.",
+      "valuation_date": "2024-03-15T00:00:00.000Z",
+      "area": 5000
+    },
+    {
+      "id": 4,
+      "parcel_id": "2",
+      "value": 2400000,
+      "valuation_type": "insurance",
+      "appraiser": "Premium Insurance Valuers",
+      "valuation_date": "2024-09-01T00:00:00.000Z",
+      "area": 5000
+    },
+    {
+      "id": 5,
+      "parcel_id": "2",
+      "value": 2500000,
+      "valuation_type": "market",
+      "appraiser": "National Property Assessment Corp.",
+      "valuation_date": "2025-08-05T00:00:00.000Z",
+      "area": 5000
+    }
+  ],
+  "property_disputes": [
+    {
+      "id": 1,
+      "parcel_id": "2",
+      "dispute_type": "boundary",
+      "description": "Dispute regarding northern boundary with adjacent property owner",
+      "disputed_by": "0xAdjacentOwner789",
+      "dispute_date": "2024-05-12T11:20:00.000Z",
+      "status": "resolved",
+      "resolution_date": "2024-07-15T16:30:00.000Z",
+      "resolution_notes": "Survey confirmed boundary as per original deed. No encroachment found."
+    }
+  ],
+  "property_documents": [
+    {
+      "id": 1,
+      "parcel_id": "2",
+      "document_type": "title_deed",
+      "document_uri": "ipfs://QmTitleDeed2Delhi",
+      "uploaded_at": "2023-01-15T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "parcel_id": "2",
+      "document_type": "survey_report",
+      "document_uri": "ipfs://QmSurveyReport2Delhi",
+      "uploaded_at": "2023-01-15T10:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "parcel_id": "2",
+      "document_type": "tax_receipt",
+      "document_uri": "ipfs://QmTaxReceipt2Delhi2024",
+      "uploaded_at": "2024-04-01T00:00:00.000Z"
+    }
+  ],
   "checkpoints": {
     "block": 4
   }
