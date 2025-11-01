@@ -1,0 +1,155 @@
+.property-history {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-history h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.history-tabs {
+    display: flex;
+    gap: 1px;
+    background: #eee;
+    padding: 1px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: white;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.tab:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.tab.active {
+    background: #1a73e8;
+    color: white;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.history-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.history-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.history-icon.transfer {
+    background: #1a73e8;
+}
+
+.history-icon.valuation {
+    background: #34a853;
+}
+
+.history-icon.dispute {
+    background: #ea4335;
+}
+
+.history-content {
+    flex: 1;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.date {
+    color: #666;
+    font-size: 14px;
+}
+
+.price, .value {
+    color: #34a853;
+    font-weight: 600;
+}
+
+.transfer-details,
+.valuation-details,
+.dispute-details {
+    font-size: 14px;
+    color: #333;
+}
+
+.description {
+    margin-top: 8px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 4px;
+    font-style: italic;
+    color: #666;
+}
+
+.resolution {
+    margin-top: 8px;
+    color: #1a73e8;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.open {
+    background: #fce8e6;
+    color: #ea4335;
+}
+
+.status.resolved {
+    background: #e6f4ea;
+    color: #34a853;
+}
+
+.status.rejected {
+    background: #fff3e0;
+    color: #f9ab00;
+}
+
+.document-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.document-link:hover {
+    text-decoration: underline;
+}

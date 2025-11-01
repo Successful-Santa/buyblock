@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": 1,
+        "contract": "AGR-001",
+        "owner": "0xOwnerA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [72.8, 19.07],
+            [72.82, 19.07],
+            [72.82, 19.09],
+            [72.8, 19.09],
+            [72.8, 19.07]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": 2,
+        "contract": "AGR-002",
+        "owner": "0xOwnerB"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [77.19, 28.61],
+            [77.21, 28.61],
+            [77.21, 28.63],
+            [77.19, 28.63],
+            [77.19, 28.61]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": 3,
+        "contract": "AGR-003",
+        "owner": "0xOwnerC"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [77.59, 12.97],
+            [77.61, 12.97],
+            [77.61, 12.99],
+            [77.59, 12.99],
+            [77.59, 12.97]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+.property-analytics {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-analytics h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.chart-section {
+    margin-bottom: 30px;
+}
+
+.chart-section h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.nearby-properties {
+    margin-top: 30px;
+}
+
+.nearby-properties h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.nearby-card {
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.nearby-card .value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a73e8;
+    margin-bottom: 8px;
+}
+
+.nearby-card .details {
+    font-size: 14px;
+    color: #666;
+}
+
+.nearby-card .details div {
+    margin-bottom: 4px;
+}

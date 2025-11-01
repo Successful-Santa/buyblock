@@ -1,0 +1,69 @@
+nohup: ignoring input
+
+> land-registry-frontend@1.0.0 start /home/srihariram/projects/land-registry-map/land-registry-dapp/frontend
+> react-scripts start
+
+(node:30637) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:30637) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view land-registry-frontend in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.20.111.84:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Failed to compile.
+
+Syntax error: /home/srihariram/projects/land-registry-map/land-registry-dapp/frontend/src/components/FloatingButton.css Unclosed block (1:1)
+> 1 | .fab {
+    | ^
+  2 |   position: fixed;
+  3 |   right: 30px;
+ERROR in ./src/components/FloatingButton.css (./node_modules/.pnpm/css-loader@6.11.0_webpack@5.102.1/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.6_webpack@5.102.1/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/.pnpm/source-map-loader@3.0.2_webpack@5.102.1/node_modules/source-map-loader/dist/cjs.js!./src/components/FloatingButton.css)
+Module build failed (from ./node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.6_webpack@5.102.1/node_modules/postcss-loader/dist/cjs.js):
+SyntaxError
+
+(1:1) /home/srihariram/projects/land-registry-map/land-registry-dapp/frontend/src/components/FloatingButton.css Unclosed block
+
+> 1 | .fab {
+    | ^
+  2 |   position: fixed;
+  3 |   right: 30px;
+
+webpack compiled with 1 error
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+ ELIFECYCLE  Command failed.

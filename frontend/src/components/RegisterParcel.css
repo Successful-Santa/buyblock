@@ -1,0 +1,101 @@
+.register-parcel {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  bottom: 20px;
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2000; /* keep registration panel above map */
+}
+
+.register-parcel .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.register-parcel .header h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.register-parcel .header button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.register-parcel .error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.register-parcel .form-group {
+  margin-bottom: 20px;
+}
+
+.register-parcel label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.register-parcel input[type="text"],
+.register-parcel textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.register-parcel textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.register-parcel input[type="file"] {
+  width: 100%;
+  padding: 8px 0;
+}
+
+.register-parcel small {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font-size: 12px;
+}
+
+.register-parcel button[type="submit"] {
+  width: 100%;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.register-parcel button[type="submit"]:hover {
+  background: #1557b0;
+}
+
+.register-parcel button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,42 @@
+.fab {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: #1a73e8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  border: none;
+  z-index: 3000; /* float above everything */
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  background: #1557b0;
+}
+
+.fab-tooltip {
+  position: absolute;
+  right: 70px;
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.fab:hover .fab-tooltip {
+  opacity: 1;
+}
