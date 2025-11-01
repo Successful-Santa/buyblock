@@ -1,0 +1,11 @@
+
+> land-registry-backend@1.0.0 start /home/srihariram/projects/land-registry-map/land-registry-dapp/backend
+> node server.js
+
+(node:32033) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/srihariram/projects/land-registry-map/land-registry-dapp/backend/server.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/srihariram/projects/land-registry-map/land-registry-dapp/backend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Backend listening on 4000
+Terminated
+ ELIFECYCLE  Command failed with exit code 143.

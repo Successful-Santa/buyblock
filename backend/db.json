@@ -1,0 +1,83 @@
+{
+  "parcels": [
+    {
+      "parcel_id": "1",
+      "geojson": {
+        "type": "Feature",
+        "properties": {
+          "contract": "AGR-001",
+          "geoCid": "ipfs://bafybeigdyrm1-mumbai-001"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [72.8, 19.07],
+              [72.82, 19.07],
+              [72.82, 19.09],
+              [72.8, 19.09],
+              [72.8, 19.07]
+            ]
+          ]
+        }
+      },
+      "doc_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "owner": "0xOwnerA",
+      "registered_at": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "parcel_id": "2",
+      "geojson": {
+        "type": "Feature",
+        "properties": {
+          "contract": "AGR-002",
+          "geoCid": "ipfs://bafybeigdyrm2-delhi-002"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [77.19, 28.61],
+              [77.21, 28.61],
+              [77.21, 28.63],
+              [77.19, 28.63],
+              [77.19, 28.61]
+            ]
+          ]
+        }
+      },
+      "doc_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "owner": "0xOwnerB",
+      "registered_at": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "parcel_id": "3",
+      "geojson": {
+        "type": "Feature",
+        "properties": {
+          "contract": "AGR-003",
+          "geoCid": "ipfs://bafybeigdyrm3-bengaluru-003"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [77.59, 12.97],
+              [77.61, 12.97],
+              [77.61, 12.99],
+              [77.59, 12.99],
+              [77.59, 12.97]
+            ]
+          ]
+        }
+      },
+      "doc_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "owner": "0xOwnerC",
+      "registered_at": "2025-11-01T00:00:00.000Z"
+    }
+  ],
+  "ownership_history": [],
+  "checkpoints": {
+    "block": 4
+  }
+}
